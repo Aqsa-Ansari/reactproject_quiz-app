@@ -1,26 +1,45 @@
 import React from "react";
 import { ListGroup } from 'react-bootstrap';
+import { BsCheckCircle, BsXCircle } from "react-icons/bs"
 
 function Result(props) {
 
+    let totalScore = 0;
+
     const listItems = props.Qs.map(Q => {
-        let a = props.scores.filter(score => Object.keys(props.scores) == Q.id)[Q.id] == 1 ? "Correct" : "Incorrect";
+        let res, ic;
+        if (props.scores.scoresArr.filter(scoresArr => Object.keys(scoresArr) == Q.id)[0][Q.id] == 1) {
+            res = "Correct"
+            ic = <BsCheckCircle />
+            totalScore += 1;
+        }
+        else {
+            res = "Incorrect"
+            ic = <BsXCircle />
+        }
+
+        let ans = props.yourAnswers.filter(answers => Object.keys(answers) == Q.id)[0][Q.id];
 
         return (
             <ListGroup.Item>
-                {Q.question}
+                {Q.id}. {Q.question}
                 <br />
-                " Answer: " {Q.answer}
+                Right Answer: {Q.answer}
                 <br />
-                {a};
+                Your Answer: {ans}
+                <br />
+                {res}{ic}
             </ListGroup.Item>
         )
     });
 
     return (
-        <ListGroup>
-            {listItems}
-        </ListGroup>
+        <div className="container border">
+            <h2>Total Score: {totalScore}/5</h2>
+            <ListGroup>
+                {listItems}
+            </ListGroup>
+        </div>
     );
 }
 

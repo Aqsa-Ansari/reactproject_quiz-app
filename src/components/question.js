@@ -12,7 +12,7 @@ function Question(props) {
       return (
         <div>
           <h3>{OneQ.question}</h3>
-          <Options num={props.counter} Q={OneQ} onAnswerSelected3={onAnswerSelected2} />
+          <Options num={props.counter} Q={OneQ} onAnswerSelected3={onAnswerSelected2} selectedValue={props.selectedValue} />
         </div>
       );
     }
