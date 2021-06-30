@@ -51,6 +51,7 @@ function Questions(props) {
     }
     else {
       setUserAnswers([...userAnswers, { [ind]: answer }]);
+
     }
     setIsNextDisabled(false);
   }

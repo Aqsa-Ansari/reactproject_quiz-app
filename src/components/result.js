@@ -1,4 +1,3 @@
-import Q from "q";
 import React from "react";
 import { ListGroup } from 'react-bootstrap';
 
